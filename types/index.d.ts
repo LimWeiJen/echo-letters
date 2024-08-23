@@ -1,0 +1,23 @@
+declare type UserParams = {
+  id: string;
+  dateOfCreation: Number;
+  email: string;
+  username: string?;
+  letters: Map<string, Letter>;
+  returnedLetters: Map<string, Letter>;
+  settings: Settings;
+}
+
+declare type LetterParams = {
+  dateOfCreation: Date;
+  id: string;
+  day: number;
+  content: string;
+  opened: boolean;
+}
+
+declare type SettingsParams = {
+  defaultAIDescription: string;
+  averageAIRespondTime: number;
+}
+

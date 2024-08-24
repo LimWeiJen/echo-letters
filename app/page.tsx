@@ -1,7 +1,11 @@
-import Navbar from "@/components/shared/Navbar"
+'use client'
+
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
+
   return (
     <main>
       <div>
@@ -19,7 +23,9 @@ export default function Home() {
           <h1>@echo letters</h1>
           <h1>Echo Letters</h1>
           <h1>Where your thoughts find timeless wisdom</h1>
-          <button>Start Now</button>
+          <SignedIn>
+            <Link href="/home">Home</Link>
+          </SignedIn>
         </div>
       </div>
     </main>

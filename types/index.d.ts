@@ -1,6 +1,6 @@
 declare type UserParams = {
   id: string;
-  dateOfCreation: Number;
+  dateOfCreation: Date;
   email: string;
   username: string?;
   letters: Map<string, Letter>;

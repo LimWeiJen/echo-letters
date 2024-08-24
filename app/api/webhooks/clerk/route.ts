@@ -51,17 +51,14 @@ export async function POST(req: Request) {
   // For this guide, you simply log the payload to the console
   const { id } = evt.data
 
-  if (evt.type === 'user.created') {
-    console.log(`User ${id} created`)
-  }
-
   switch (evt.type) {
     case 'user.created':
       const { id, email_addresses, username } = evt.data;
+      console.log(`User ${id} created`)
 
       const user: UserParams = {
         id,
-        dateOfCreation: Date.now(),
+        dateOfCreation: new Date(),
         email: email_addresses[0].email_address,
         username: username,
         letters: new Map<string, LetterParams>(),

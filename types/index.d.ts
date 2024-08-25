@@ -9,6 +9,7 @@ declare type UserParams = {
 }
 
 declare type LetterParams = {
+  title: string;
   dateOfCreation: Date;
   id: string;
   day: number;

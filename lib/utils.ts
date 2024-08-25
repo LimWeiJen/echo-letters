@@ -26,3 +26,13 @@ export const differenceInDays = (date1: Date, date2: Date) => {
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 };
+
+export const getAllUnreadLetters = async (letters: Map<string, LetterParams>) => {
+  const unreadLetters: LetterParams[] = [];
+  letters.forEach((letter) => {
+    if (!letter.opened) {
+      unreadLetters.push(letter);
+    }
+  });
+  return unreadLetters;
+}

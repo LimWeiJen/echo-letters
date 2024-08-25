@@ -6,7 +6,7 @@ import { connectToDatabase } from "../database/mongoose";
 import { differenceInDays, handleError } from "../utils";
 import { revalidatePath } from "next/cache";
 
-export async function createEmptyLetter(userId: string, path: string) {
+export async function createEmptyLetter(userId: string) {
   try {
     await connectToDatabase();
 
@@ -25,8 +25,6 @@ export async function createEmptyLetter(userId: string, path: string) {
     });
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters } });
-
-    revalidatePath(path);
 
     return new Response("", { status: 200 });
 

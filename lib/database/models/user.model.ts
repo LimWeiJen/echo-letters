@@ -6,6 +6,10 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
+  dateOfCreation: {
+    type: Date,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -21,6 +25,9 @@ const UserSchema = new Schema({
   },
   returnedLetters: {
     type: Map
+  },
+  settings: {
+    type: Object,
   }
 });
 

@@ -4,7 +4,6 @@ import { v4 } from "uuid";
 import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
 import { differenceInDays, handleError } from "../utils";
-import { revalidatePath } from "next/cache";
 
 export async function createEmptyLetter(userId: string) {
   try {

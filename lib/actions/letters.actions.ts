@@ -3,7 +3,9 @@
 import { v4 } from "uuid";
 import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
-import { differenceInDays, generateReturnedLetter, handleError } from "../utils";
+import { differenceInDays, handleError } from "../utils";
+import { generateReturnedLetter } from "../ai/gemini";
+import { redirect } from "next/navigation";
 
 // CREATE
 export async function createEmptyLetter(userId: string) {
@@ -17,6 +19,7 @@ export async function createEmptyLetter(userId: string) {
     const newLetters = user.letters as Map<string, LetterParams>;
     const newLetterId = v4()
     newLetters.set(newLetterId, {
+      title: "",
       dateOfCreation: new Date(),
       id: newLetterId,
       day: differenceInDays(new Date(), user.dateOfCreation),
@@ -25,6 +28,8 @@ export async function createEmptyLetter(userId: string) {
     });
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters } });
+
+    redirect(`/create/${newLetterId}`);
   } catch (error) {
     handleError(error);
   }
@@ -42,9 +47,11 @@ export async function updateLetter(userId: string, letterId: string, letter: Let
     const newLetters = user.letters as Map<string, LetterParams>;
     const newReturnedLetters = user.returnedLetters as Map<string, LetterParams>;
     newLetters.set(letterId, letter);
-    newReturnedLetters.set(letterId, await generateReturnedLetter(letter));
+    newReturnedLetters.set(letterId, await generateReturnedLetter(letter, user.settings as SettingsParams));
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
+
+    redirect(`/home`)
   } catch (error) {
     handleError(error);
   }

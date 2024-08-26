@@ -1,6 +1,5 @@
 import { createEmptyLetter } from '@/lib/actions/letters.actions'
-import { Edit, Inbox, MailIcon, MailOpenIcon, MailPlusIcon, Pencil, Plus, Settings } from 'lucide-react'
-import Link from 'next/link'
+import { Inbox, MailIcon, MailOpenIcon, MailPlusIcon, Pencil, Plus, Settings } from 'lucide-react'
 import React from 'react'
 
 const Navbar = ({ user }: { user: any }) => {

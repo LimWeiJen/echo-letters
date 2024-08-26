@@ -10,8 +10,6 @@ const Home = () => {
   const [userLetters, setUserLetters] = useState<Map<string, LetterParams>>();
   const [returnedLetters, setReturnedLetters] = useState<Map<string, LetterParams>>();
 
-  if (!isLoaded) return null;
-
   useEffect(() => {
     if (!user) return;
     getAllLetters(user?.id).then((data) => {
@@ -19,6 +17,8 @@ const Home = () => {
       setReturnedLetters(data.returnedLetters);
     })
   }, [user]);
+
+  if (!isLoaded) return null;
 
   if (isSignedIn)
     return (

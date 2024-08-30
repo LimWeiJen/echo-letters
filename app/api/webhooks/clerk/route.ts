@@ -47,10 +47,6 @@ export async function POST(req: Request) {
     })
   }
 
-  // Do something with the payload
-  // For this guide, you simply log the payload to the console
-  const { id } = evt.data
-
   switch (evt.type) {
     case 'user.created':
       const { id, email_addresses, username } = evt.data;
@@ -61,8 +57,8 @@ export async function POST(req: Request) {
         dateOfCreation: new Date(),
         email: email_addresses[0].email_address,
         username: username,
-        letters: new Map<string, LetterParams>(),
-        returnedLetters: new Map<string, LetterParams>(),
+        letters: [],
+        returnedLetters: [],
         settings: {
           defaultAIDescription: "I am your thoughtful correspondent, here to reflect on your thoughts and experiences with the wisdom of ancient philosophy. My responses are guided by a calm and reflective tone, offering gentle insights that encourage self-discovery and personal growth. I strive to be a compassionate listener, helping you navigate life’s challenges with a balanced and philosophical perspective.",
           averageAIRespondTime: 0

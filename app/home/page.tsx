@@ -7,14 +7,15 @@ import React, { useEffect, useState } from 'react'
 
 const Home = () => {
   const { isSignedIn, user, isLoaded } = useUser();
-  const [userLetters, setUserLetters] = useState<Map<string, LetterParams>>();
-  const [returnedLetters, setReturnedLetters] = useState<Map<string, LetterParams>>();
+  const [userLetters, setUserLetters] = useState<Array<LetterParams>>();
+  const [returnedLetters, setReturnedLetters] = useState<Array<LetterParams>>();
 
   useEffect(() => {
     if (!user) return;
     getAllLetters(user?.id).then((data) => {
       setUserLetters(data.userLetters);
       setReturnedLetters(data.returnedLetters);
+      console.log(data);
     })
   }, [user]);
 
@@ -25,8 +26,8 @@ const Home = () => {
       <div>
         <Navbar user={user} />
         <div>
-          {Array.from(userLetters?.values() || []).map((v, i) => <div key={i}>
-            {v.title}
+          {userLetters?.map((letter, i) => <div key={i}>
+            {letter.title}
           </div>)}
         </div>
       </div>

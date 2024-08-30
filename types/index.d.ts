@@ -3,8 +3,8 @@ declare type UserParams = {
   dateOfCreation: Date;
   email: string;
   username: string?;
-  letters: Map<string, Letter>;
-  returnedLetters: Map<string, Letter>;
+  letters: Array<LetterParams>;
+  returnedLetters: Array<LetterParams>;
   settings: Settings;
 }
 

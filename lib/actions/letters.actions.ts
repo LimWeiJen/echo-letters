@@ -16,9 +16,9 @@ export async function createEmptyLetter(userId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const newLetters = user.letters as Map<string, LetterParams>;
+    const newLetters = user.letters as Array<LetterParams>;
     const newLetterId = v4()
-    newLetters.set(newLetterId, {
+    newLetters.push({
       title: "",
       dateOfCreation: new Date(),
       id: newLetterId,
@@ -44,10 +44,8 @@ export async function updateLetter(userId: string, letterId: string, letter: Let
 
     if (!user) throw new Error("User not found");
 
-    const newLetters = user.letters as Map<string, LetterParams>;
-    const newReturnedLetters = user.returnedLetters as Map<string, LetterParams>;
-    newLetters.set(letterId, letter);
-    newReturnedLetters.set(letterId, await generateReturnedLetter(letter, user.settings as SettingsParams));
+    const newLetters = (user.letters as Array<LetterParams>).filter(l => l.id !== letterId).push(letter);
+    const newReturnedLetters = (user.returnedLetters as Array<LetterParams>).filter(l => l.id !== letterId).push(await generateReturnedLetter(letter, user.settings as SettingsParams));
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
 
@@ -66,8 +64,8 @@ export async function getLetter(userId: string, letterId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const userLetter = (user.letters as Map<string, LetterParams>).get(letterId);
-    const returnedLetter = (user.returnedLetters as Map<string, LetterParams>).get(letterId);
+    const userLetter = (user.letters as Array<LetterParams>).find(l => l.id === letterId);
+    const returnedLetter = (user.returnedLetters as Array<LetterParams>).find(l => l.id === letterId);
 
     return JSON.parse(JSON.stringify({ userLetter, returnedLetter }));
   } catch (error) {
@@ -84,8 +82,8 @@ export async function getAllLetters(userId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const userLetters = user.letters as Map<string, LetterParams>;
-    const returnedLetters = user.returnedLetters as Map<string, LetterParams>;
+    const userLetters = user.letters as Array<LetterParams>;
+    const returnedLetters = user.returnedLetters as Array<LetterParams>;
 
     return JSON.parse(JSON.stringify({ userLetters, returnedLetters }));
   } catch (error) {
@@ -102,10 +100,8 @@ export async function deleteLetter(userId: string, letterId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const newLetters = user.letters as Map<string, LetterParams>;
-    const newReturnedLetters = user.returnedLetters as Map<string, LetterParams>;
-    newLetters.delete(letterId);
-    newReturnedLetters.delete(letterId);
+    const newLetters = (user.letters as Array<LetterParams>).filter(l => l.id !== letterId);
+    const newReturnedLetters = (user.returnedLetters as Array<LetterParams>).filter(l => l.id !== letterId);
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
   } catch (error) {
@@ -122,13 +118,14 @@ export async function markLetterAsOpened(userId: string, letterId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const newReturnedLetters = user.returnedLetters as Map<string, LetterParams>;
-    const newReturnedLetter = newReturnedLetters.get(letterId);
+    let newReturnedLetters = user.returnedLetters as Array<LetterParams>;
+    const newReturnedLetter = newReturnedLetters.find(l => l.id === letterId);
 
     if (!newReturnedLetter) throw new Error("Letter not found");
 
     newReturnedLetter.opened = true;
-    newReturnedLetters.set(letterId, newReturnedLetter);
+    newReturnedLetters = newReturnedLetters.filter(l => l.id !== letterId);
+    newReturnedLetters.push(newReturnedLetter);
 
     await User.findOneAndUpdate({ id: userId }, { $set: { returnedLetters: newReturnedLetters } });
   } catch (error) {

@@ -21,10 +21,10 @@ const UserSchema = new Schema({
     unique: true,
   },
   letters: {
-    type: Map,
+    type: Array<LetterParams>,
   },
   returnedLetters: {
-    type: Map
+    type: Array<LetterParams>
   },
   settings: {
     type: Object,

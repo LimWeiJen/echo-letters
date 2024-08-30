@@ -44,8 +44,8 @@ export async function updateLetter(userId: string, letterId: string, letter: Let
 
     if (!user) throw new Error("User not found");
 
-    const newLetters = (user.letters as Array<LetterParams>).filter(l => l.id !== letterId).push(letter);
-    const newReturnedLetters = (user.returnedLetters as Array<LetterParams>).filter(l => l.id !== letterId).push(await generateReturnedLetter(letter, user.settings as SettingsParams));
+    const newLetters = [...(user.letters as Array<LetterParams>).filter(l => l.id !== letterId), letter];
+    const newReturnedLetters = [...(user.returnedLetters as Array<LetterParams>).filter(l => l.id !== letterId), await generateReturnedLetter(letter, user.settings as SettingsParams)];
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
 
@@ -64,8 +64,8 @@ export async function getLetter(userId: string, letterId: string) {
 
     if (!user) throw new Error("User not found");
 
-    const userLetter = (user.letters as Array<LetterParams>).find(l => l.id === letterId);
-    const returnedLetter = (user.returnedLetters as Array<LetterParams>).find(l => l.id === letterId);
+    const userLetter = (user.letters as Array<LetterParams>).filter(l => l.id === letterId)[0];
+    const returnedLetter = (user.returnedLetters as Array<LetterParams>).filter(l => l.id === letterId)[0];
 
     return JSON.parse(JSON.stringify({ userLetter, returnedLetter }));
   } catch (error) {

@@ -4,6 +4,7 @@ import { Just_Another_Hand as Font } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Background from "@/components/shared/Background";
 
 const fontSans = Font({ weight: '400', variable: "--font-sans", subsets: ["latin"] });
 
@@ -19,8 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>{children}</body>
+      <html lang="en" className="transition-all overflow-hidden">
+        <body className={cn("min-h-screen bg-gradient-to-b from-[#212334] to-[#131630] text-[#EDEDED] bg-transparent font-sans antialiased", fontSans.variable)}>
+          <Background />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );

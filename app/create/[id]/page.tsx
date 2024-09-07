@@ -18,8 +18,6 @@ const Create = () => {
   const [date, setdate] = useState<Date>();
   const [returnedLetterDate, setreturnedLetterDate] = useState<Date>();
 
-  if (!isSignedIn || !isLoaded || !user || !id) return null;
-
   useEffect(() => {
     // To be removed during production
     //const letter = dummyLetters.find(letter => letter.id === id as string);

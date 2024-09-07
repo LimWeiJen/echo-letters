@@ -36,7 +36,7 @@ export default function SettingsPage() {
           <Card className="w-full p-7 max-w-2xl border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] mx-auto text-[#EDEDED] rounded-3xl">
             <CardHeader>
               <CardTitle className="text-4xl tracking-wide text-[#DDC56FB0]">AI Settings</CardTitle>
-              <CardDescription className="text-2xl">Customize your AI replier's behavior</CardDescription>
+              <CardDescription className="text-2xl">Customize your AI behavior</CardDescription>
             </CardHeader>
             <form onSubmit={handleSubmit}>
               <CardContent className="space-y-6 text-xl tracking-wide">

@@ -5,7 +5,7 @@ declare type UserParams = {
   username: string?;
   letters: Array<LetterParams>;
   returnedLetters: Array<LetterParams>;
-  settings: Settings;
+  settings: SettingsParams;
 }
 
 declare type LetterParams = {

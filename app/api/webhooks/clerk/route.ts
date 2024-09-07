@@ -61,7 +61,7 @@ export async function POST(req: Request) {
         returnedLetters: [],
         settings: {
           defaultAIDescription: "I am your thoughtful correspondent, here to reflect on your thoughts and experiences with the wisdom of ancient philosophy. My responses are guided by a calm and reflective tone, offering gentle insights that encourage self-discovery and personal growth. I strive to be a compassionate listener, helping you navigate life’s challenges with a balanced and philosophical perspective.",
-          averageAIRespondTime: 0
+          averageAIRespondTime: 0,
         }
       }
 

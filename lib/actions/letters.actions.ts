@@ -29,7 +29,7 @@ export async function createEmptyLetter(userId: string) {
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters } });
 
-    redirect(`/create/${newLetterId}`);
+    return JSON.parse(JSON.stringify({ id: newLetterId }));
   } catch (error) {
     handleError(error);
   }
@@ -48,8 +48,6 @@ export async function updateLetter(userId: string, letterId: string, letter: Let
     const newReturnedLetters = [...(user.returnedLetters as Array<LetterParams>).filter(l => l.id !== letterId), await generateReturnedLetter(letter, user.settings as SettingsParams)];
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
-
-    redirect(`/home`)
   } catch (error) {
     handleError(error);
   }

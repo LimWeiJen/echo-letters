@@ -15,19 +15,20 @@ const Create = () => {
   const content = useRef<any>(null);
   const title = useRef<any>(null);
   const [returnedLetterContent, setreturnedLetterContent] = useState("");
-  const [date, setdate] = useState<Date>();
-  const [returnedLetterDate, setreturnedLetterDate] = useState<Date>();
+  const [day, setday] = useState(0);
+  const [returnedDay, setreturnedDay] = useState(0);
 
   useEffect(() => {
     // To be removed during production
+    //if (!user) return;
     //const letter = dummyLetters.find(letter => letter.id === id as string);
     //const returnedLetter = dummyLetters.find(letter => letter.id === id as string);
     //if (letter) {
-    //title.current.value = letter.title;
-    //content.current.value = letter.content;
-    //setdate(letter!.dateOfCreation!);
+    //if (title.current) title.current.value = letter.title;
+    //if (content.current) content.current.value = letter.content;
+    //setday(letter!.day);
     //setreturnedLetterContent(returnedLetter!.content);
-    //setreturnedLetterDate(returnedLetter!.dateOfCreation!);
+    //setreturnedDay(returnedLetter!.day);
     //}
     //return;
 
@@ -35,6 +36,9 @@ const Create = () => {
     getLetter(user?.id!, id as string).then((data) => {
       title.current.value = data.userLetter?.title;
       content.current.value = data.userLetter?.content;
+      setday(data.userLetter?.day);
+      setreturnedLetterContent(data.returnedLetter?.content);
+      setreturnedDay(data.returnedLetter?.day);
     })
   }, [user]);
 
@@ -50,14 +54,14 @@ const Create = () => {
               <div className='overflow-y-scroll scroll-m-0 scroll-p-0 h-5/6'>
                 <div className='flex flex-col w-full justify-center px-14' >
                   <div className='flex flex-col gap-2 my-14'>
-                    <h1 className='text-center text-8xl text-[#DDC56FB0]'>Returned Letter</h1>
-                    <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {differenceInDays(new Date(), new Date(returnedLetterDate!))}</h1>
+                    <h1 className='text-center text-8xl text-[#DDC56FB0]'>Re: {title.current?.value}</h1>
+                    <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {returnedDay}</h1>
                     <p className='text-3xl tracking-wide px-3.5 py-10'>{returnedLetterContent}</p>
                   </div>
                   <hr />
                   <div className='flex flex-col gap-2 my-14'>
                     <input type="text" className='bg-transparent text-center text-8xl text-[#DDC56FB0] outline-none border-none' ref={title} />
-                    <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {differenceInDays(new Date(), new Date(date!))}</h1>
+                    <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {day}</h1>
                   </div>
                   <div className="
                   grid

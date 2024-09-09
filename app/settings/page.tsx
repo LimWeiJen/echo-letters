@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Navbar from "@/components/shared/Navbar"
 import { useUser } from "@clerk/nextjs"
 import { Save } from "lucide-react"
-import { updateSettings } from "@/lib/actions/settings.actions"
+import { getSettings, updateSettings } from "@/lib/actions/settings.actions"
 import { redirect } from "next/navigation"
 
 export default function SettingsPage() {
@@ -25,6 +25,14 @@ export default function SettingsPage() {
   }
 
   const { isSignedIn, user, isLoaded } = useUser();
+
+  useEffect(() => {
+    if (!user) return;
+    getSettings(user.id).then((data: SettingsParams) => {
+      setDescription(data.defaultAIDescription);
+      setResponseFrequency(data.averageAIRespondTime);
+    });
+  }, [user]);
 
   if (!isLoaded) return null;
 

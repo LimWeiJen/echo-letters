@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -18,7 +18,7 @@ const About = () => {
           <h1 className="text-2xl mx-32 text-[#EDEDED] overflow-y-scroll scroll-m-0 scroll-p-0 tracking-wide">
             Welcome to <strong>Echo Letters</strong>, where your thoughts find a thoughtful response.
 
-            At Echo Letters, we believe in the power of reflection and the value of every individual's story. Our platform allows you to create personal diaries, which are then sent to our artificial intelligence for a unique and engaging interaction. Inspired by the timeless wisdom of Seneca's "Letters from a Stoic," our AI provides thoughtful, reflective replies to your diary entries, offering insights and perspectives that encourage deeper contemplation and personal growth.
+            At Echo Letters, we believe in the power of reflection and the value of every individual&#39;s story. Our platform allows you to create personal diaries, which are then sent to our artificial intelligence for a unique and engaging interaction. Inspired by the timeless wisdom of Seneca&#39;s "Letters from a Stoic," our AI provides thoughtful, reflective replies to your diary entries, offering insights and perspectives that encourage deeper contemplation and personal growth.
 
             <strong>Our Mission</strong>
 
@@ -51,7 +51,7 @@ const About = () => {
 
             <br /><br />
             <strong>Join Us</strong>
-            Start your journey with Echo Letters today and discover the power of thoughtful reflection. Whether you're looking to explore your thoughts, seek advice, or simply find a new way to engage with your experiences, DiaryAI is here for you.
+            Start your journey with Echo Letters today and discover the power of thoughtful reflection. Whether you&#39;re looking to explore your thoughts, seek advice, or simply find a new way to engage with your experiences, DiaryAI is here for you.
           </h1>
         </div>
       </div>

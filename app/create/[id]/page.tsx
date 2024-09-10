@@ -1,12 +1,13 @@
 "use client"
 
+import { GalaxyLoadingScreen } from '@/components/shared/LoadingScreen';
 import Navbar from '@/components/shared/Navbar';
 import { dummyLetters } from '@/constants/dummydata';
 import { updateLetter, getLetter } from '@/lib/actions/letters.actions';
-import { differenceInDays } from '@/lib/utils';
 import { useUser } from '@clerk/nextjs';
 import { SendHorizonal } from 'lucide-react';
-import { redirect, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import Router from 'next/router';
 import React, { useEffect, useRef, useState } from 'react'
 
 const Create = () => {
@@ -17,6 +18,7 @@ const Create = () => {
   const [returnedLetterContent, setreturnedLetterContent] = useState("");
   const [day, setday] = useState(0);
   const [returnedDay, setreturnedDay] = useState(0);
+  const [dataLoaded, setdataLoaded] = useState(false);
 
   useEffect(() => {
     // To be removed during production
@@ -39,10 +41,13 @@ const Create = () => {
       setday(data.userLetter?.day);
       setreturnedLetterContent(data.returnedLetter?.content);
       setreturnedDay(data.returnedLetter?.day);
+      setdataLoaded(true);
     })
   }, [user]);
 
   if (!isLoaded) return null;
+
+  if (!dataLoaded) return <GalaxyLoadingScreen />
 
   if (isSignedIn)
     return (
@@ -91,7 +96,7 @@ const Create = () => {
                     dateOfCreation: new Date(),
                     day: 0,
                     id: id as string
-                  }).then(() => redirect("/home"))} />
+                  }).then(() => Router.push('/home'))} />
                 </div>
               </div>
             </div>

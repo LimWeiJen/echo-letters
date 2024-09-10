@@ -9,11 +9,13 @@ import Navbar from "@/components/shared/Navbar"
 import { useUser } from "@clerk/nextjs"
 import { Save } from "lucide-react"
 import { getSettings, updateSettings } from "@/lib/actions/settings.actions"
-import { redirect } from "next/navigation"
+import { GalaxyLoadingScreen } from "@/components/shared/LoadingScreen"
+import Router from "next/router"
 
 export default function SettingsPage() {
   const [description, setDescription] = useState("")
   const [responseFrequency, setResponseFrequency] = useState(1)
+  const [dataLoaded, setdataLoaded] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -21,7 +23,7 @@ export default function SettingsPage() {
       defaultAIDescription: description,
       averageAIRespondTime: responseFrequency
     });
-    redirect("/home");
+    Router.push("/home");
   }
 
   const { isSignedIn, user, isLoaded } = useUser();
@@ -31,10 +33,13 @@ export default function SettingsPage() {
     getSettings(user.id).then((data: SettingsParams) => {
       setDescription(data.defaultAIDescription);
       setResponseFrequency(data.averageAIRespondTime);
+      setdataLoaded(true);
     });
   }, [user]);
 
   if (!isLoaded) return null;
+
+  if (!dataLoaded) return <GalaxyLoadingScreen />
 
   if (isSignedIn)
     return (

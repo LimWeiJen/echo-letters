@@ -1,11 +1,12 @@
 "use client"
 
+import { GalaxyLoadingScreen } from '@/components/shared/LoadingScreen'
 import Navbar from '@/components/shared/Navbar'
 import { dummyLetters } from '@/constants/dummydata'
 import { getAllLetters } from '@/lib/actions/letters.actions'
 import { differenceInDays } from '@/lib/utils'
 import { useUser } from '@clerk/nextjs'
-import { Mailbox, MailWarning, Trash } from 'lucide-react'
+import { MailWarning, Trash } from 'lucide-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -13,21 +14,26 @@ const Home = () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const [userLetters, setUserLetters] = useState<Array<LetterParams>>();
   const [returnedLetters, setReturnedLetters] = useState<Array<LetterParams>>();
+  const [dataLoaded, setdataLoaded] = useState(false);
 
   useEffect(() => {
     // To be removed during production
     //setUserLetters(dummyLetters);
     //setReturnedLetters(dummyLetters);
     //return;
+    //
 
     if (!user) return;
     getAllLetters(user?.id!).then((data) => {
       setUserLetters(data.userLetters);
       setReturnedLetters(data.returnedLetters);
+      setdataLoaded(true);
     })
   }, [user]);
 
   if (!isLoaded) return null;
+
+  if (!dataLoaded) return <GalaxyLoadingScreen />
 
   if (isSignedIn)
     return (

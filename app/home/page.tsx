@@ -50,7 +50,9 @@ const Home = () => {
                         <h1 className='text-4xl'>{letter.title}</h1>
                         <h1 className='text-2xl'>Day {differenceInDays(new Date(), new Date(letter.dateOfCreation))}</h1>
                       </div>
-                      {!returnedLetters![i].opened && <MailWarning className='h-full' />}
+                      {
+                        //!returnedLetters![i].opened && <MailWarning className='h-full' />
+                      }
                     </Link>
                     <div className='flex items-center justify-center align-middle gap-8 mx-4 transition-all flex-[0.05]'>
                       <Trash className='transition-all hover:scale-125 hover:cursor-pointer scale-110' />

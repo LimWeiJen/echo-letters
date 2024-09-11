@@ -7,7 +7,6 @@ import { updateLetter, getLetter } from '@/lib/actions/letters.actions';
 import { useUser } from '@clerk/nextjs';
 import { SendHorizonal } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import Router from 'next/router';
 import React, { useEffect, useRef, useState } from 'react'
 
 const Create = () => {
@@ -97,7 +96,7 @@ const Create = () => {
                     dateOfCreation: new Date(),
                     day: 0,
                     id: id as string
-                  }).then(() => Router.push('/home'))} />
+                  }).then(() => window.location.href = '/home')} />
                 </div>
               </div>
             </div>

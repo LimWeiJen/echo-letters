@@ -5,7 +5,6 @@ import { Home, Inbox, MailIcon, MailOpenIcon, MailPlusIcon, Pencil, Plus, Settin
 import Link from 'next/link'
 import React from 'react'
 import { SignedIn, UserButton } from "@clerk/nextjs"
-import Router from 'next/router'
 
 const Navbar = ({ user }: { user: any }) => {
   return (
@@ -16,7 +15,7 @@ const Navbar = ({ user }: { user: any }) => {
       <Link href='/home'>
         <Home />
       </Link>
-      <Pencil className='hover:cursor-pointer' onClick={() => createEmptyLetter(user.id).then((data) => Router.push(`/create/${data.id}`))} />
+      <Pencil className='hover:cursor-pointer' onClick={() => createEmptyLetter(user.id).then((data) => window.location.href = `/create/${data.id}`)} />
       <MailIcon />
       <Link href='/settings'>
         <Settings />

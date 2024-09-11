@@ -36,8 +36,8 @@ const Create = () => {
 
     if (!user) return;
     getLetter(user?.id!, id as string).then((data) => {
-      title.current.value = data.userLetter?.title;
-      content.current.value = data.userLetter?.content;
+      if (title.current) title.current.value = data.userLetter?.title;
+      if (content.current) content.current.value = data.userLetter?.content;
       setday(data.userLetter?.day);
       setreturnedLetterContent(data.returnedLetter?.content);
       setreturnedDay(data.returnedLetter?.day);

@@ -10,7 +10,6 @@ import { useUser } from "@clerk/nextjs"
 import { Save } from "lucide-react"
 import { getSettings, updateSettings } from "@/lib/actions/settings.actions"
 import { GalaxyLoadingScreen } from "@/components/shared/LoadingScreen"
-import Router from "next/router"
 
 export default function SettingsPage() {
   const [description, setDescription] = useState("")
@@ -23,7 +22,7 @@ export default function SettingsPage() {
       defaultAIDescription: description,
       averageAIRespondTime: responseFrequency
     });
-    Router.push("/home");
+    window.location.href = "/home";
   }
 
   const { isSignedIn, user, isLoaded } = useUser();

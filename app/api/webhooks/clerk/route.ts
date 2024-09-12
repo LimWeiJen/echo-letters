@@ -47,11 +47,14 @@ export async function POST(req: Request) {
     })
   }
 
+  // Check the event type
   switch (evt.type) {
+    // If the event type is user created, create a new default user in the MongoDB database
     case 'user.created':
+      // get the user's id, email address and username
       const { id, email_addresses, username } = evt.data;
-      console.log(`User ${id} created`)
 
+      // create a new default user object
       const user: UserParams = {
         id,
         dateOfCreation: new Date(),
@@ -65,6 +68,7 @@ export async function POST(req: Request) {
         }
       }
 
+      // add the new user object to the database
       const newUser = await createUser(user);
       if (newUser)
         await clerkClient.users.updateUserMetadata(id, {

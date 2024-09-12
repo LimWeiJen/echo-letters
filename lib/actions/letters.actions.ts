@@ -27,7 +27,17 @@ export async function createEmptyLetter(userId: string) {
       opened: true
     });
 
-    await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters } });
+    const newReturnedLetters = user.returnedLetters as Array<LetterParams>;
+    newReturnedLetters.push({
+      title: "",
+      dateOfCreation: new Date(),
+      id: newLetterId,
+      day: differenceInDays(new Date(), user.dateOfCreation),
+      content: "",
+      opened: false
+    });
+
+    await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });
 
     return JSON.parse(JSON.stringify({ id: newLetterId }));
   } catch (error) {

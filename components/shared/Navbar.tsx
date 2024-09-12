@@ -1,7 +1,7 @@
 "use client"
 
 import { createEmptyLetter } from '@/lib/actions/letters.actions'
-import { Home, Inbox, MailIcon, MailOpenIcon, MailPlusIcon, Pencil, Plus, Settings } from 'lucide-react'
+import { Home, MailIcon, Pencil, Settings } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { SignedIn, UserButton } from "@clerk/nextjs"

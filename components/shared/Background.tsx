@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import bg from '../../public/assets/Background.svg'
 
+// for the yellow circle that follows the mouse pointer
 if (typeof window !== 'undefined') {
   document.onmousemove = (e) => {
     let xPos = e.pageX;

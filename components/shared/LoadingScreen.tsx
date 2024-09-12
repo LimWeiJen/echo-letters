@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-export function GalaxyLoadingScreen({ message = "Connecting to with world" }) {
+export function GalaxyLoadingScreen({ message = "Connecting" }) {
   const [dots, setDots] = useState('.')
 
   useEffect(() => {

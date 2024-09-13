@@ -5,7 +5,6 @@ import User from "../database/models/user.model";
 import { connectToDatabase } from "../database/mongoose";
 import { differenceInDays, handleError } from "../utils";
 import { generateReturnedLetter } from "../ai/gemini";
-import { redirect } from "next/navigation";
 
 // CREATE
 export async function createEmptyLetter(userId: string) {
@@ -34,7 +33,7 @@ export async function createEmptyLetter(userId: string) {
       id: newLetterId,
       day: differenceInDays(new Date(), user.dateOfCreation),
       content: "",
-      opened: false
+      opened: true
     });
 
     await User.findOneAndUpdate({ id: userId }, { $set: { letters: newLetters, returnedLetters: newReturnedLetters } });

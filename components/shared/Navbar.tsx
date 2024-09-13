@@ -21,7 +21,7 @@ const Navbar = ({ user, unreadLetters }: { user: any, unreadLetters: Array<Lette
       {unreadLetters?.length > 0 ? <DropdownMenu>
         <DropdownMenuTrigger><MailWarning /></DropdownMenuTrigger>
         <DropdownMenuContent>
-          {unreadLetters.map((l: LetterParams) => <DropdownMenuItem onClick={() => window.location.href = `/create/${l.id}`}>
+          {unreadLetters.map((l: LetterParams) => <DropdownMenuItem key={l.id} onClick={() => window.location.href = `/create/${l.id}`}>
             {l.title}
           </DropdownMenuItem>)}
         </DropdownMenuContent>

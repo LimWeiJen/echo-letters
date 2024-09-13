@@ -14,7 +14,6 @@ const Home = () => {
   const [userLetters, setUserLetters] = useState<Array<LetterParams>>();
   const [returnedLetters, setReturnedLetters] = useState<Array<LetterParams>>();
   const [dataLoaded, setdataLoaded] = useState(false);
-  const [unreadLetters, setunreadLetters] = useState<Array<LetterParams>>([]);
 
   /// USE EFFECT ///
   useEffect(() => {
@@ -22,7 +21,6 @@ const Home = () => {
     getAllLetters(user?.id!).then((data) => {
       setUserLetters(data.userLetters);
       setReturnedLetters(data.returnedLetters);
-      setunreadLetters(data.returnedLetters.filter((l: LetterParams) => !l.opened));
       setdataLoaded(true);
     })
   }, [user]);
@@ -33,7 +31,7 @@ const Home = () => {
   if (isSignedIn)
     return (
       <div>
-        <Navbar user={user} unreadLetters={unreadLetters} />
+        <Navbar user={user} />
         <main>
           <div className="border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] my-10 mx-32 rounded-3xl h-screen">
             <div className="flex flex-col h-[calc(100vh)] gap-28">

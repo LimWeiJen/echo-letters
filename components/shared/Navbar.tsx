@@ -8,7 +8,17 @@ import { SignedIn, UserButton } from "@clerk/nextjs"
 import { DropdownMenu, DropdownMenuContent } from '@radix-ui/react-dropdown-menu'
 import { DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu'
 
-const Navbar = ({ user, unreadLetters }: { user: any, unreadLetters: Array<LetterParams> }) => {
+const Navbar = ({ user }: { user: any }) => {
+  const [unreadLetters, setunreadLetters] = useState<Array<LetterParams>>([]);
+
+  useEffect(() => {
+    if (!user) return;
+    console.log(user)
+    getAllLetters(user.id).then(data => {
+      setunreadLetters(data.returnedLetters.filter((letter: LetterParams) => !letter.opened));
+    })
+  }, [user]);
+
   return (
     <nav className='flex w-screen justify-center gap-x-4 p-5'>
       <SignedIn>

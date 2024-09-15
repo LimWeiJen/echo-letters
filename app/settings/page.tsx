@@ -62,18 +62,6 @@ export default function SettingsPage() {
                     className="min-h-[100px] bg-transparent text-[#EDEDED] outline-none text-2xl"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="responseFrequency" className="text-2xl">Average AI Response Time (day)</Label>
-                  <Input
-                    id="responseFrequency"
-                    type="number"
-                    min="0"
-                    step="0.1"
-                    value={responseFrequency}
-                    onChange={(e) => setResponseFrequency(Number(e.target.value))}
-                    className="text-2xl bg-transparent text-[#EDEDED] outline-none"
-                  />
-                </div>
               </CardContent>
               <CardFooter>
                 <button type="submit">

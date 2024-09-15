@@ -4,7 +4,7 @@ import { GalaxyLoadingScreen } from '@/components/shared/LoadingScreen';
 import Navbar from '@/components/shared/Navbar';
 import { updateLetter, getLetter, markLetterAsOpened } from '@/lib/actions/letters.actions';
 import { useUser } from '@clerk/nextjs';
-import { SendHorizonal } from 'lucide-react';
+import { Loader, SendHorizonal } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -18,6 +18,7 @@ const Create = () => {
   const [day, setday] = useState(0);
   const [returnedDay, setreturnedDay] = useState(0);
   const [dataLoaded, setdataLoaded] = useState(false);
+  const [sendingLetter, setsendingLetter] = useState(false);
 
   /// USE EFFECT ///
   useEffect(() => {
@@ -77,21 +78,26 @@ const Create = () => {
                   after:invisible
                   after:content-[attr(data-cloned-val)_'_']
                   after:border
-                ">
+                  ">
                     <textarea
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
                       className='w-full h-[100vh] text-3xl tracking-wide bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
                     />
                   </div>
-                  <SendHorizonal className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' onClick={() => updateLetter(user?.id, id as string, {
-                    title: title,
-                    content: content,
-                    opened: true,
-                    dateOfCreation: new Date(),
-                    day: 0,
-                    id: id as string
-                  }).then(() => window.location.href = '/home')} />
+                  {!sendingLetter ?
+                    <SendHorizonal className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' onClick={() => {
+                      setsendingLetter(true);
+                      updateLetter(user?.id, id as string, {
+                        title: title,
+                        content: content,
+                        opened: true,
+                        dateOfCreation: new Date(),
+                        day: 0,
+                        id: id as string
+                      }).then(() => window.location.href = '/home')
+                    }} /> : <Loader className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' />
+                  }
                 </div>
               </div>
             </div>

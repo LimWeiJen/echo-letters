@@ -31,7 +31,7 @@ const Navbar = ({ user }: { user: any }) => {
       {unreadLetters?.length > 0 ? <DropdownMenu>
         <DropdownMenuTrigger><MailWarning /></DropdownMenuTrigger>
         <DropdownMenuContent>
-          {unreadLetters.map((l: LetterParams) => <DropdownMenuItem key={l.id} onClick={() => window.location.href = `/create/${l.id}`}>
+          {unreadLetters.map((l: LetterParams) => <DropdownMenuItem key={l.id} className='hover:cursor-pointer' onClick={() => window.location.href = `/create/${l.id}`}>
             {l.title}
           </DropdownMenuItem>)}
         </DropdownMenuContent>

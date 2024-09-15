@@ -60,7 +60,7 @@ const Create = () => {
                   }
                   <hr />
                   <div className='flex flex-col gap-2 my-14'>
-                    <input type="text" className='bg-transparent text-center text-8xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
+                    <input placeholder='Title' type="text" className='bg-transparent text-center text-8xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
                     <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {day}</h1>
                   </div>
                   <div className="
@@ -80,6 +80,7 @@ const Create = () => {
                   after:border
                   ">
                     <textarea
+                      placeholder='Write something...'
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
                       className='w-full h-[100vh] text-3xl tracking-wide bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
@@ -93,7 +94,7 @@ const Create = () => {
                         content: content,
                         opened: true,
                         dateOfCreation: new Date(),
-                        day: 0,
+                        day: day,
                         id: id as string
                       }).then(() => window.location.href = '/home')
                     }} /> : <Loader className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' />

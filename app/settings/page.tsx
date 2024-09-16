@@ -44,11 +44,11 @@ export default function SettingsPage() {
     return (
       <div>
         <Navbar user={user} />
-        <div className="container mx-auto py-10">
-          <Card className="w-full p-7 max-w-2xl border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] mx-auto text-[#EDEDED] rounded-3xl">
+        <div className="container mx-auto lg:py-10 py-2">
+          <Card className="w-full p-7 max-w-2xl lg:border-2 shadow-2xl lg:border-[#EDEDED] bg-[#0e0e0e69] mx-auto text-[#EDEDED] rounded-3xl">
             <CardHeader>
-              <CardTitle className="text-4xl tracking-wide text-[#DDC56FB0]">AI Settings</CardTitle>
-              <CardDescription className="text-2xl">Customize your AI behavior</CardDescription>
+              <CardTitle className="text-4xl tracking-wide text-[#DDC56FB0] text-center lg:text-left">AI Settings</CardTitle>
+              <CardDescription className="text-2xl text-center lg:text-left">Customize your AI behavior</CardDescription>
             </CardHeader>
             <form onSubmit={handleSubmit}>
               <CardContent className="space-y-6 text-xl tracking-wide">

@@ -47,21 +47,21 @@ const Create = () => {
       <div>
         <Navbar user={user} />
         <main>
-          <div className="border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] my-10 mx-32 rounded-3xl h-screen">
+          <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl h-screen">
             <div className="flex flex-col h-[calc(100vh)] gap-28 mt-7">
               <div className='overflow-y-scroll scroll-m-0 scroll-p-0 h-5/6'>
                 <div className='flex flex-col w-full justify-center px-14' >
                   {returnedLetterContent !== "" &&
                     <div className='flex flex-col gap-2 my-14'>
-                      <h1 className='text-center text-8xl text-[#DDC56FB0]'>Re: {title}</h1>
-                      <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {returnedDay}</h1>
-                      <p className='text-3xl tracking-wide px-3.5 py-10'>{returnedLetterContent}</p>
+                      <h1 className='text-center lg:text-8xl text-4xl text-[#DDC56FB0]'>Re: {title}</h1>
+                      <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {returnedDay}</h1>
+                      <p className='lg:text-3xl text-xl tracking-wide px-3.5 py-10'>{returnedLetterContent}</p>
                     </div>
                   }
                   <hr />
                   <div className='flex flex-col gap-2 my-14'>
-                    <input placeholder='Title' type="text" className='bg-transparent text-center text-8xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
-                    <h1 className='text-center text-6xl text-[#EDEDED50]'>Day {day}</h1>
+                    <input placeholder='Title' type="text" className='bg-transparent text-center lg:text-8xl text-4xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
+                    <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {day}</h1>
                   </div>
                   <div className="
                   grid
@@ -83,7 +83,7 @@ const Create = () => {
                       placeholder='Write something...'
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
-                      className='w-full h-[100vh] text-3xl tracking-wide bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
+                      className='w-full h-[100vh] lg:text-3xl text-xl tracking-wide bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
                     />
                   </div>
                   {!sendingLetter ?

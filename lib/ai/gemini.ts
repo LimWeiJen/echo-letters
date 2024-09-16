@@ -32,7 +32,7 @@ Generate the reply letter only.
 
     dateOfCreation: new Date(),
     id: letter.id,
-    day: differenceInDays(new Date(), letter.dateOfCreation),
+    day: letter.day,
     content: text,
     opened: false
   }

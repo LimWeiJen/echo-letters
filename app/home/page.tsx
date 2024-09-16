@@ -33,7 +33,7 @@ const Home = () => {
       <div>
         <Navbar user={user} />
         <main>
-          <div className="border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] my-10 mx-32 rounded-3xl h-screen">
+          <div className="lg:border-2 lg:shadow-2xl lg:border-[#EDEDED] lg:bg-[#0e0e0e69] lg:my-10 lg:mx-32 rounded-3xl h-screen">
             <div className="flex flex-col h-[calc(100vh)] gap-28">
               <div className='overflow-y-scroll scroll-m-0 scroll-p-0 mt-8 h-5/6'>
                 {userLetters?.map((letter, i) =>

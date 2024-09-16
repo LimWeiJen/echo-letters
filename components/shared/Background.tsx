@@ -18,7 +18,7 @@ if (typeof window !== 'undefined') {
 
 const Background = () => {
   return (
-    <div className='absolute top-0 right-0 h-screen w-screen -z-10 overflow-hidden'>
+    <div className='absolute top-0 right-0 h-screen w-screen -z-10 overflow-hidden opacity-0 lg:opacity-100'>
       <Image src={bg} alt='background' className='absolute top-[70%] scale-[200%]' />
       <div id='circle' style={{
         background: 'radial-gradient(50% 50% at 50% 50%, rgba(110, 98, 56, 0.3) 0%, rgba(255, 255, 255, 0) 100%)',

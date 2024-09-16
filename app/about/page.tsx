@@ -14,7 +14,8 @@ const About = () => {
         </nav>
         <div className="flex flex-col items-center h-[calc(100vh)] gap-28 mt-28">
           <h1 className="text-9xl"><span className="text-[#DDC56FB0]">About</span></h1>
-          <h1></h1>
+          <h1 className='text-6xl'>
+          </h1>
         </div>
       </div>
     </main>

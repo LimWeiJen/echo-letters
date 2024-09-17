@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Just_Another_Hand as Font } from "next/font/google";
+import { Overpass_Mono as Font } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import "./globals.css";

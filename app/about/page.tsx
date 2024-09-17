@@ -14,7 +14,16 @@ const About = () => {
         </nav>
         <div className="flex flex-col items-center h-[calc(100vh)] gap-28 mt-28">
           <h1 className="text-9xl"><span className="text-[#DDC56FB0]">About</span></h1>
-          <h1 className='text-6xl'>
+          <h1 className='p-4 overflow-y-scroll h-96 w-full lg:text-3xl text-xl tracking-wide bg-transparent'>
+            Welcome to Echo Letters, where your thoughts find timeless wisdom.
+            <br /><br />
+            At Echo Letters, we believe in the power of reflection and the value of every individual’s story. Our platform allows you to create personal diaries, which are then sent to our advanced artificial intelligence for a unique and engaging interaction. Our AI provides thoughtful, reflective replies to your diary entries, offering insights and perspectives that encourage deeper contemplation and personal growth.
+            <br /><br />
+            Of course, the tone our AI is fully customizable to suit your writing style.
+            <br /><br />
+            Our mission is to create a safe and supportive space where users can express themselves freely and receive meaningful feedback. We aim to blend the ancient art of letter writing with modern technology, fostering a community of introspection and connection.
+            <br /><br />
+            Start your journey with Echo Letters today and discover the power of thoughtful reflection. Whether you’re looking to explore your thoughts, seek advice, or simply find a new way to engage with your experiences, Echo Letters is here for you.
           </h1>
         </div>
       </div>

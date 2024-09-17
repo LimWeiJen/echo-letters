@@ -47,7 +47,7 @@ const Create = () => {
       <div>
         <Navbar user={user} />
         <main>
-          <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0e69] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl h-screen">
+          <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0edd] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl h-screen">
             <div className="flex flex-col h-[calc(100vh)] gap-28 mt-7">
               <div className='overflow-y-scroll scroll-m-0 scroll-p-0 h-5/6'>
                 <div className='flex flex-col w-full justify-center px-14' >
@@ -58,7 +58,7 @@ const Create = () => {
                       <p className='lg:text-3xl text-xl tracking-wide px-3.5 py-10'>{returnedLetterContent}</p>
                     </div>
                   }
-                  <hr />
+                  {returnedLetterContent !== "" && <hr />}
                   <div className='flex flex-col gap-2 my-14'>
                     <input placeholder='Title' type="text" className='bg-transparent text-center lg:text-8xl text-4xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
                     <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {day}</h1>
@@ -83,11 +83,12 @@ const Create = () => {
                       placeholder='Write something...'
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
-                      className='w-full h-[100vh] lg:text-3xl text-xl tracking-wide bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
+                      className='w-full h-[100vh] lg:text-3xl text-xl tracking-wider bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
+                      style={{ color: "#c0c0c0" }}
                     />
                   </div>
                   {!sendingLetter ?
-                    <SendHorizonal className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' onClick={() => {
+                    <SendHorizonal className='absolute top-[1.5%] left-[57%] bg-[#515574] rounded-full p-2 w-10 h-10 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer' onClick={() => {
                       setsendingLetter(true);
                       updateLetter(user?.id, id as string, {
                         title: title,
@@ -97,7 +98,7 @@ const Create = () => {
                         day: day,
                         id: id as string
                       }).then(() => window.location.href = '/home')
-                    }} /> : <Loader className='absolute bottom-[4%] bg-[#515574] rounded-full p-2 w-12 h-12 hover:shadow-2xl transition-all hover:scale-110 hover:cursor-pointer left-[13%]' />
+                    }} /> : <GalaxyLoadingScreen />
                   }
                 </div>
               </div>

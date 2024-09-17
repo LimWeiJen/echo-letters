@@ -24,19 +24,19 @@ const Navbar = ({ user }: { user: any }) => {
       <SignedIn>
         <UserButton />
       </SignedIn>
-      <Link href='/home'>
+      <Link href='/home' className='transition-all hover:scale-125'>
         <Home />
       </Link>
-      <Pencil className='hover:cursor-pointer' onClick={() => createEmptyLetter(user.id).then((data) => window.location.href = `/create/${data.id}`)} />
+      <Pencil className='hover:cursor-pointer transition-all hover:scale-125' onClick={() => createEmptyLetter(user.id).then((data) => window.location.href = `/create/${data.id}`)} />
       {unreadLetters?.length > 0 ? <DropdownMenu>
-        <DropdownMenuTrigger><MailWarning /></DropdownMenuTrigger>
+        <DropdownMenuTrigger className='transition-all hover:scale-125'><MailWarning /></DropdownMenuTrigger>
         <DropdownMenuContent>
           {unreadLetters.map((l: LetterParams) => <DropdownMenuItem key={l.id} className='hover:cursor-pointer text-xl bg-[#0E0E0E] my-2 p-2' onClick={() => window.location.href = `/create/${l.id}`}>
             {l.title}
           </DropdownMenuItem>)}
         </DropdownMenuContent>
-      </DropdownMenu> : <MailIcon />}
-      <Link href='/settings'>
+      </DropdownMenu> : <MailIcon className='transition-all hover:scale-125' />}
+      <Link href='/settings' className='transition-all hover:scale-125'>
         <Settings />
       </Link>
     </nav>

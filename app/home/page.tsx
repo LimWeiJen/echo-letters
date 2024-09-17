@@ -19,8 +19,8 @@ const Home = () => {
   useEffect(() => {
     if (!user) return;
     getAllLetters(user?.id!).then((data) => {
-      setUserLetters(data.userLetters);
-      setReturnedLetters(data.returnedLetters);
+      setUserLetters(data.userLetters.reverse());
+      setReturnedLetters(data.returnedLetters.reverse());
       setdataLoaded(true);
     })
   }, [user]);

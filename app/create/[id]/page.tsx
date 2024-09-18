@@ -47,43 +47,28 @@ const Create = () => {
       <div>
         <Navbar user={user} />
         <main>
-          <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0edd] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl h-screen">
-            <div className="flex flex-col h-[calc(100vh)] gap-28 mt-7">
-              <div className='overflow-y-scroll scroll-m-0 scroll-p-0 h-5/6'>
+          <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0edd] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl">
+            <div className="flex flex-col h-[calc(100vh-10rem)] gap-28 mt-7">
+              <div className='overflow-y-scroll scroll-m-0 scroll-p-0 mb-7 px-24'>
                 <div className='flex flex-col w-full justify-center px-14' >
                   {returnedLetterContent !== "" &&
                     <div className='flex flex-col gap-2 my-14'>
-                      <h1 className='text-center lg:text-8xl text-4xl text-[#DDC56FB0]'>Re: {title}</h1>
+                      <h1 className='text-center font-bold lg:text-7xl text-3xl text-[#DDC56FB0]'>Re: {title}</h1>
                       <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {returnedDay}</h1>
-                      <p className='lg:text-3xl text-xl tracking-wide px-3.5 py-10'>{returnedLetterContent}</p>
+                      <p className='lg:text-xl text-lg px-3.5 py-10'>{returnedLetterContent}</p>
                     </div>
                   }
                   {returnedLetterContent !== "" && <hr />}
                   <div className='flex flex-col gap-2 my-14'>
-                    <input placeholder='Title' type="text" className='bg-transparent text-center lg:text-8xl text-4xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
+                    <input placeholder='Title' type="text" className='bg-transparent font-bold text-center lg:text-7xl text-3xl text-[#DDC56FB0] outline-none border-none' value={title} onChange={(e) => settitle(e.target.value)} />
                     <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {day}</h1>
                   </div>
-                  <div className="
-                  grid
-                  text-sm
-                  after:px-3.5
-                  after:py-2.5
-                  [&>textarea]:text-inherit
-                  after:text-inherit
-                  [&>textarea]:resize-none
-                  [&>textarea]:overflow-hidden
-                  [&>textarea]:[grid-area:1/1/2/2]
-                  after:[grid-area:1/1/2/2]
-                  after:whitespace-pre-wrap
-                  after:invisible
-                  after:content-[attr(data-cloned-val)_'_']
-                  after:border
-                  ">
+                  <div>
                     <textarea
                       placeholder='Write something...'
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
-                      className='w-full h-[100vh] lg:text-3xl text-xl tracking-wider bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
+                      className='w-full h-[100vh] lg:text-xl text-lg bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
                       style={{ color: "#c0c0c0" }}
                     />
                   </div>

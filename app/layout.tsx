@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Overpass_Mono as Font } from "next/font/google";
+import { Roboto_Mono as Font } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import "./globals.css";

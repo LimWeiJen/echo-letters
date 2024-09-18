@@ -33,15 +33,15 @@ const Home = () => {
       <div>
         <Navbar user={user} />
         <main>
-          <div className="lg:border-2 lg:shadow-2xl lg:border-[#EDEDED] lg:bg-[#0e0e0e69] lg:my-10 lg:mx-32 rounded-3xl h-screen">
-            <div className="flex flex-col h-[calc(100vh)] gap-28">
+          <div className="lg:border-2 lg:shadow-2xl lg:border-[#EDEDED] lg:bg-[#0e0e0e69] lg:my-10 lg:mx-32 rounded-3xl">
+            <div className="flex flex-col max-h-[calc(100vh-10rem)] h-[calc(100vh-10rem)] gap-28">
               <div className='overflow-y-scroll scroll-m-0 scroll-p-0 mt-8 h-5/6'>
                 {userLetters?.map((letter, i) =>
                   <div key={i} className='flex mx-7 transition-all group'>
                     <Link href={`/create/${letter.id}`} className='flex justify-between transition-all group-hover:bg-[#0e0e0e89] flex-[0.95] p-4 rounded-xl'>
                       <div>
-                        <h1 className='text-4xl'>{letter.title}</h1>
-                        <h1 className='text-2xl'>Day {letter.day}</h1>
+                        <h1 className='text-xl'>{letter.title}</h1>
+                        <h1 className='text-lg'>Day {letter.day}</h1>
                       </div>
                       {(!returnedLetters![i].opened && returnedLetters![i].title !== "") && <MailWarning className='h-full' />}
                     </Link>

@@ -1,9 +1,6 @@
 'use client'
 
-import Background from "@/components/shared/Background";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Link from "next/link";
-import { useEffect } from "react";
 
 export default function Home() {
   return (
@@ -17,10 +14,10 @@ export default function Home() {
           </div>
         </nav>
         <div className="flex flex-col items-center justify-center h-[calc(100vh)]">
-          <h1 className="lg:text-5xl text-4xl text-[#EDEDED50] text-center">@echo letters</h1>
-          <h1 className="lg:text-9xl text-8xl text-center">Echo <span className="text-[#DDC56FB0]">Letters</span></h1>
-          <h1 className="lg:text-5xl text-4xl text-[#EDEDED50] text-center">Where your thoughts find timeless wisdom</h1>
-          <div className="lg:text-5xl text-4xl my-24 py-2.5 px-24 bg-[#DDC56F63] rounded-3xl border-2 border-[#EDEDED] transition-all hover:scale-110 hover:shadow-2xl hover:rotate-1">
+          <h1 className="lg:text-xl text-lg text-[#EDEDED50] text-center">@echo letters</h1>
+          <h1 className="lg:text-7xl text-6xl text-center">Echo <span className="text-[#DDC56FB0]">Letters</span></h1>
+          <h1 className="lg:text-xl text-lg text-[#EDEDED50] text-center">Where your thoughts find timeless wisdom</h1>
+          <div className="lg:text-xl text-lg my-24 py-2.5 px-24 bg-[#DDC56F63] rounded-3xl border-2 border-[#EDEDED] transition-all hover:scale-110 hover:shadow-2xl hover:rotate-1">
             <Link href="/home">Start Now</Link>
           </div>
         </div>

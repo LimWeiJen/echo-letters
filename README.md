@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <br>
+  <img src="https://i.imgur.com/r8xQuhG.png" alt="website logo" width="25px">
+  <span>Echo</span> <span style="color: #DDC56F">Letters</span>
+  <br>
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#-about">About</a>
+  •
+  <a href="#-screenshots">Screenshots</a>
+  •
+  <a href="#%EF%B8%8F-technologies">Technologies</a>
+</p>
 
-First, run the development server:
+## ❓ About
+#### Welcome to Echo Letters, where your thoughts find timeless wisdom.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+At **Echo Letters**, we believe in the power of reflection and the value of every individual’s story. Our platform allows you to create personal diaries, which are then sent to our advanced artificial intelligence for a unique and engaging interaction. Our AI provides thoughtful, reflective replies to your diary entries, offering insights and perspectives that encourage deeper contemplation and personal growth.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Of course, the tone our AI is fully customizable to suit your writing style.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Our mission is to create a safe and supportive space where users can express themselves freely and receive meaningful feedback. We aim to blend the ancient art of letter writing with modern technology, fostering a community of introspection and connection.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Start your journey with Echo Letters today and discover the power of thoughtful reflection. Whether you’re looking to explore your thoughts, seek advice, or simply find a new way to engage with your experiences, Echo Letters is here for you.
 
-## Learn More
+- Date of Creation: 19/9/2024
+- Author: Lim Wei Jen
+- Version: 1.0.0
 
-To learn more about Next.js, take a look at the following resources:
+## 📷 Screenshots
+![img](https://i.imgur.com/mILvm9S.png)
+![img](https://i.imgur.com/4DvvkkX.png)
+![img](https://i.imgur.com/CrOpUz2.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## ⚙️ Technologies
+![Next.js](https://img.shields.io/badge/-Next.js-05122A?style=flat&logo=next.js)&nbsp;
+![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)&nbsp;
+![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-05122A?style=flat&logo=tailwindcss)&nbsp;
+![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript)&nbsp;
+![Gemini](https://img.shields.io/badge/-Gemini-05122A?style=flat&logo=googlegemini)&nbsp;

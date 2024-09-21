@@ -4,8 +4,8 @@ import Link from 'next/link';
 const About = () => {
   return (
     <main>
-      <div className="border-2 shadow-2xl border-[#EDEDED] bg-[#0E0E0EDD] my-10 mx-32 rounded-3xl h-screen">
-        <nav className="flex gap-x-12 justify-end align-middle py-5 px-14">
+      <div className="lg:border-2 bg-[#0E0E0EDD] shadow-2xl border-[#EDEDED] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl h-screen">
+        <nav className="flex gap-x-12 lg:justify-end justify-center align-middle py-5 px-14">
           <Link href="/" className="transition-all hover:scale-110 hover:shadow-2xl">Home</Link>
           <Link href="/about" className="transition-all hover:scale-110 hover:shadow-2xl">About</Link>
           <div className="bg-[#DDC56F63] px-6 rounded-xl border-2 border-[#EDEDED] transition-all hover:scale-110 hover:shadow-2xl hover:rotate-1">

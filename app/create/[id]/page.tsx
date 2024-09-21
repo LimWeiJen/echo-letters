@@ -55,7 +55,7 @@ const Create = () => {
                     <div className='flex flex-col gap-2 my-14'>
                       <h1 className='text-center font-bold lg:text-7xl text-3xl text-[#DDC56FB0]'>Re: {title}</h1>
                       <h1 className='text-center lg:text-6xl text-3xl text-[#EDEDED50]'>Day {returnedDay}</h1>
-                      <p className='lg:text-xl text-lg px-3.5 py-10'>{returnedLetterContent}</p>
+                      <p className='lg:text-xl text-lg lg:px-3.5 py-10'>{returnedLetterContent}</p>
                     </div>
                   }
                   {returnedLetterContent !== "" && <hr />}
@@ -68,7 +68,7 @@ const Create = () => {
                       placeholder='Write something...'
                       value={content}
                       onChange={(e) => setcontent(e.target.value)}
-                      className='w-full h-[100vh] lg:text-xl text-lg bg-transparent border border-transparent appearance-none rounded px-3.5 py-2.5 outline-none'
+                      className='w-full h-[100vh] lg:text-xl text-lg bg-transparent border border-transparent appearance-none rounded lg:px-3.5 py-2.5 outline-none'
                       style={{ color: "#c0c0c0" }}
                     />
                   </div>

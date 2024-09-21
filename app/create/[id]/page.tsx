@@ -2,9 +2,11 @@
 
 import { GalaxyLoadingScreen } from '@/components/shared/LoadingScreen';
 import Navbar from '@/components/shared/Navbar';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
 import { updateLetter, getLetter, markLetterAsOpened } from '@/lib/actions/letters.actions';
 import { useUser } from '@clerk/nextjs';
-import { Loader, SendHorizonal } from 'lucide-react';
+import { Loader, SendHorizonal, XCircleIcon, XIcon } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -19,6 +21,10 @@ const Create = () => {
   const [returnedDay, setreturnedDay] = useState(0);
   const [dataLoaded, setdataLoaded] = useState(false);
   const [sendingLetter, setsendingLetter] = useState(false);
+  const [showAlert, setshowAlert] = useState(false);
+
+  const handleShowAlert = () => setshowAlert(true);
+  const handleCloseAlert = () => setshowAlert(false);
 
   /// USE EFFECT ///
   useEffect(() => {
@@ -49,8 +55,8 @@ const Create = () => {
         <main>
           <div className="lg:border-2 shadow-2xl border-[#EDEDED] bg-[#0e0e0edd] lg:my-10 my-2 lg:mx-32 mx-2 rounded-3xl">
             <div className="flex flex-col h-[calc(100vh-10rem)] gap-28 mt-7">
-              <div className='overflow-y-scroll scroll-m-0 scroll-p-0 mb-7 px-24'>
-                <div className='flex flex-col w-full justify-center px-14' >
+              <div className='overflow-y-scroll scroll-m-0 scroll-p-0 mb-7 lg:px-24'>
+                <div className='flex flex-col w-full justify-center lg:px-14 px-2' >
                   {returnedLetterContent !== "" &&
                     <div className='flex flex-col gap-2 my-14'>
                       <h1 className='text-center font-bold lg:text-7xl text-3xl text-[#DDC56FB0]'>Re: {title}</h1>
@@ -83,6 +89,10 @@ const Create = () => {
                         day: day,
                         id: id as string
                       }).then(() => window.location.href = '/home')
+                        .catch(() => {
+                          setsendingLetter(false);
+                          handleShowAlert();
+                        })
                     }} /> : <GalaxyLoadingScreen />
                   }
                 </div>
@@ -90,6 +100,21 @@ const Create = () => {
             </div>
           </div>
         </main >
+        {showAlert && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="animate-in fade-in duration-300 bg-stone-900">
+              <Alert variant="destructive" className="max-w-md">
+                <Button variant="ghost" size="icon" className='absolute top-2 right-2' onClick={handleCloseAlert}>
+                  <XCircleIcon className="h-4 w-4" />
+                </Button>
+                <AlertTitle className="text-lg font-semibold">Error</AlertTitle>
+                <AlertDescription className="mt-2">
+                  Your letter contains language that may be considered offensive or sensitive. Could you please revise it?
+                </AlertDescription>
+              </Alert>
+            </div>
+          </div>
+        )}
       </div >
     )
 }
